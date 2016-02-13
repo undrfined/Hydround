@@ -1,0 +1,24 @@
+{
+	"en": [
+		"server": "Server",
+		"loadingServer": "Loading server...",
+		"binding": "Binding on port %d...",
+		"bindingFail": "Failed to bind!",
+		"error": "ERROR",
+		"info": "INFO",
+		"fatal": "FATAL",
+		"warning": "WARNING",
+		"debug": "DEBUG"
+	],
+	"ru": [
+		"server": "Сервер"
+		"loadingServer": "Сервер загружается...",
+		"binding": "Занимаю порт %d...",
+		"bindingFail": "Невозможно занять порт!",
+		"error": "ОШИБКА",
+		"info": "ИНФОРМАЦИЯ",
+		"fatal": "ФАТАЛЬНЬНАЯ",
+		"warning": "ПРЕДУПРЕЖДЕНИЕ",
+		"debug": "ДЕБАГ"
+	]
+}
