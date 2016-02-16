@@ -17,7 +17,6 @@
 #include <string>
 #include <vector>
 
-#include "Resources.h"
 #include "utils/Config.h"
 #include "utils/Log.h"
 #include "utils/Translation.h"
@@ -44,10 +43,9 @@ std::vector<std::string> split(const std::string &s, char delim) {
     return elems;
 }
 int main(){
-	Translation t;
-	Log logger(t.getTranslation("server", "Server"));
-	Config cfg(Resources::getConfigFile());
-	logger.info(t.getTranslation("loadingServer", "Loading server..."));
+	Log logger(Translation->getTranslation("server"));
+	Config cfg("ServerConfig.json");
+	logger.info(Translation->getTranslation("loadingServer"));
 	int port = cfg.readInt("ServerPort", 19131);
 	char binding[32] = { };
 	sprintf(binding, t.getTranslation("binding", "Binding on port %d...").c_str(), port);
