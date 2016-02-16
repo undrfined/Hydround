@@ -7,28 +7,16 @@
 //	▒▒█▒▒█▒▒██▒▒███▒▒█▒▒█▒▒██▒▒▒██▒▒█▒▒█▒███▒▒
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/xml_parser.hpp>
-#include <boost/foreach.hpp>
-#include <cassert>
-#include <iostream>
-#include <sstream>
-#include <string>
-#include "Config.h"
-using namespace std;
+#ifndef PLUGIN_H_
+#define PLUGIN_H_
 
-class Config {
+class Plugin {
 	private:
-		string path;
-		boost::property_tree::ptree pt;
-	public:
-		Config(string s) : path(s){
-      boost::property_tree::read_xml(path, pt);
-		}
-		int readInt(string key){
-        return pt.get<int>(key);
-    }
-		string readString(string key){
-        return pt.get<string>(key);
-    }
+	void onEnable();
+	void onLoad();
+	void onDisable();
+	void disable();
+	void enable();
 };
+
+#endif /* PLUGIN_H_ */

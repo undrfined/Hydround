@@ -1,0 +1,11 @@
+<en>
+		<server>Server</server>
+		<loadingServer>Loading server...</loadingServer>
+		<binding>Binding on port %d...</binding>
+		<bindingFail>Failed to bind!</bindingFail>
+		<error>ERROR</error>
+		<info>INFO</info>
+		<fatal>FATAL</fatal>
+		<warning>WARNING</warning>
+		<debug>DEBUG</debug>
+</en>

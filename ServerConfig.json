@@ -1,9 +1,0 @@
-{
-	"ServerPort": 19132,
-	"ServerName": "Hydround server",
-	"ServerMotd": "Hydround server",
-	"MaxPlayers": 20,
-	"ServerWhitelist": true,
-	"ServerIp": "0.0.0.0",
-	"Language": "en"
-}

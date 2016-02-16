@@ -6,7 +6,6 @@
 #include <sstream>
 #include "Translation.h"
 #include "Config.h"
-#include "../Resources.h"
 
 class Log{
 	private:

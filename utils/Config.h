@@ -7,17 +7,19 @@
 //	▒▒█▒▒█▒▒██▒▒███▒▒█▒▒█▒▒██▒▒▒██▒▒█▒▒█▒███▒▒
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-#ifndef Included_Config_H
-#define Included_Config_H
+#ifndef CONFIG_H_
+#define CONFIG_H_
 #include <string>
+#include <boost/property_tree/ptree.hpp>
 using namespace std;
 
 class Config {
 	private:
 		string path;
+		boost::property_tree::ptree pt;
 	public:
 		Config(string s) : path(s);
-		int readInt(string key, int def);
-		string readString(string key, string def);
+		int readInt(string key);
+		string readString(string key);
 };
-#endif
+#endif /* CONFIG_H_ */

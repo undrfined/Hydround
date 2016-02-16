@@ -1,0 +1,7 @@
+<ServerPort>19132</ServerPort>
+<ServerName>Hydround server</ServerName>
+<ServerMotd>Hydround server</ServerMotd>
+<MaxPlayers>20</MaxPlayers>
+<ServerWhitelist>true</ServerWhitelist>
+<ServerIp>0.0.0.0</ServerIp>
+<Language>en</Language>
