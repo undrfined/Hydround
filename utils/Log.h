@@ -7,10 +7,10 @@
 //	▒▒█▒▒█▒▒██▒▒███▒▒█▒▒█▒▒██▒▒▒██▒▒█▒▒█▒███▒▒
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-#ifndef LOG_H
-#define LOG_H
+#ifndef LOG_H_
+#define LOG_H_
 
-#include <iostream>
+#include <string>
 using namespace std;
 
 class Log{
@@ -27,4 +27,4 @@ class Log{
 		void info(const string s);
 		void debug(const string s);	 
 };
-#endif /* LOG_H */
+#endif /* LOG_H_ */

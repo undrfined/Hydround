@@ -17,8 +17,10 @@ class Translation {
 	private:
 	string lang;
 public:
-	Translation(string l) : lang(l){
+	Translation() {
 		Config file("../Translation.xml");
+		Config cfg("../Server.xml");
+		lang = cfg.readString("Language");
 	}
 	string getTranslation(string key){
 		stringstream ss << lang << "." << key;
