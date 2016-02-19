@@ -34,7 +34,7 @@ int main(){
 	Log logger(t.getTranslation("server"));
 	Config cfg("Server.xml");
 	logger.info(t.getTranslation("loadingServer"));
-	int port = cfg.readInt("ServerPort", 19132);
+	int port = cfg.readInt("ServerPort");
 	char binding[32] = { };
 	sprintf(binding, t.getTranslation("binding").c_str(), port);
 	logger.info(string(binding));

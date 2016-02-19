@@ -17,7 +17,9 @@ class Log{
 	private:
 		string prefix;
 	public:
-		Log(string p) : prefix(p);
+		Log(string p) : prefix(p){
+			
+		}
 		void replaceAll(std::string& str, const std::string& from, const std::string& to);
 		string getCurrentTime(const string format);
 		string getFormat(const string mode, const int color);

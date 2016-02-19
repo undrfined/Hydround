@@ -13,17 +13,12 @@
 #include "Config.h"
 using namespace std;
 
-class Translation {
-	private:
-	string lang;
-public:
-	Translation() {
-		Config file("../Translation.xml");
+	Translation::Translation() : file(Config("../Translation.xml")) {
 		Config cfg("../Server.xml");
 		lang = cfg.readString("Language");
 	}
-	string getTranslation(string key){
-		stringstream ss << lang << "." << key;
-		file.readString(ss.str());
+	string Translation::getTranslation(string key){
+		stringstream ss;
+		ss << lang << "." << key;
+		Translation::file.readString(ss.str());
 		    }
-};
