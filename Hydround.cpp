@@ -20,16 +20,21 @@
 #include "utils/Config.h"
 #include "utils/Log.h"
 #include "utils/Translation.h"
-
-class Package;
-
+#include "Hydround.h"
 using namespace boost::asio;
 
 using namespace std;
 typedef unsigned char byte;
 std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems);
 std::vector<std::string> split(const std::string &s, char delim);
-int main(){
+extern "C" Hydround* create_object() { 
+return new Hydround;
+} 
+extern "C" void destroy_object( Hydround* object ) {
+	delete object;
+	}
+	
+void Hydround::start(){
 	Translation t;
 	Log logger(t.getTranslation("server"));
 	Config cfg("Server.xml");
