@@ -12,7 +12,7 @@
 class Plugin {
 	public:
 	Plugin(){ };
-	virtual ~Plugin(){};
+	virtual ~Plugin(){ };
 	virtual void enable();
 	virtual void disable();
 };
