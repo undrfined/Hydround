@@ -21,5 +21,7 @@ Once you compile Hydround, you should run the binary file named 'Hydround':
 ```
 ./hydround
 ```
+# Plugins?
+There is TestPlugin in plugins directory. Just compile it using make in TestPlugin directory.
 # Windows?
 Hydround **_not_** supports windows right now. The reason is i have not windows yet.
