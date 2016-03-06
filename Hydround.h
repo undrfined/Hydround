@@ -14,7 +14,6 @@ class Hydround {
     public:
 	Hydround();
 	virtual void start();
-	virtual void stop();
 };
 
 #endif /* HYDROUND_H_ */

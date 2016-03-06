@@ -7,35 +7,40 @@
 //	▒▒█▒▒█▒▒██▒▒███▒▒█▒▒█▒▒██▒▒▒██▒▒█▒▒█▒███▒▒
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-#include <boost/asio/basic_datagram_socket.hpp>
-#include <boost/asio/buffer.hpp>
-#include <boost/asio/io_service.hpp>
-#include <boost/asio/ip/basic_endpoint.hpp>
-#include <boost/asio/ip/udp.hpp>
 #include <stdio.h>
-#include <sstream>
+#include <dlfcn.h>
+#include <iostream>
+#include <cstdio>
 #include <string>
 #include <vector>
 
-#include "utils/Config.h"
-#include "utils/Log.h"
-#include "utils/Translation.h"
+#include "plugin/Plugin.h"
 #include "Hydround.h"
-using namespace boost::asio;
-
 using namespace std;
-typedef unsigned char byte;
-std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems);
-std::vector<std::string> split(const std::string &s, char delim);
-extern "C" Hydround* create_object() { 
+extern "C" Hydround* create_object() {
 return new Hydround;
-} 
+}
 extern "C" void destroy_object( Hydround* object ) {
 	delete object;
 	}
-	
+
+Hydround::Hydround() {
+
+}
+
 void Hydround::start(){
-	Translation t;
+	void* handle = dlopen("./plugins/TestPlugin.so", RTLD_LAZY);
+if(!handle){
+fprintf(stderr, "Error loading TestPlugin: %s\n", dlerror());
+dlclose(handle);
+}else{
+Plugin* (*create)();
+		create = (Plugin* (*)())dlsym(handle, "__createPluginObject");
+		Plugin* p = (Plugin*)create();
+		p->enable();
+		p->disable();
+}
+/*Translation t;
 	Log logger(t.getTranslation("server"));
 	Config cfg("Server.xml");
 	logger.info(t.getTranslation("loadingServer"));
@@ -59,21 +64,5 @@ void Hydround::start(){
 		sock.send_to(buffer(ss.str()), sender);
 	}
 
-
-}
-
-std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
-    std::stringstream ss(s);
-    std::string item;
-    while (std::getline(ss, item, delim)) {
-        elems.push_back(item);
-    }
-    return elems;
-}
-
-
-std::vector<std::string> split(const std::string &s, char delim) {
-    std::vector<std::string> elems;
-    split(s, delim, elems);
-    return elems;
+*/
 }
