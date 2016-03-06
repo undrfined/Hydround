@@ -15,7 +15,7 @@ sudo ./install.sh
 # How to launch?
 Once you compile Hydround, you should run the binary file named 'Hydround':
 ```
-./Hydround
+./hydround
 ```
 # Windows?
 Hydround **_not_** supports windows right now. The reason is i have not windows yet.
