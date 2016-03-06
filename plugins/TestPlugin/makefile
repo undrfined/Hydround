@@ -1,2 +1,2 @@
 all:
-  g++ -shared -fPIC -o ../TestPlugin.so TestPlugin.so
+  g++ -shared -fPIC -o ../TestPlugin.so TestPlugin.cpp
