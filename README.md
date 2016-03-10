@@ -1,18 +1,18 @@
 # Hydround
 
-[![Join the chat at https://gitter.im/undrfined/Hydround](https://badges.gitter.im/undrfined/Hydround.svg)](https://gitter.im/undrfined/Hydround?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/undrfined/Hydround](https://badges.gitter.im/undrfined/Hydround.svg)](https://gitter.im/undrfined/Hydround?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)  
 MC:PE server core written in C++.
 # How to compile?
 First of all, download sources from github.
 ```
 git clone https://github.com/undrfined/Hydround.git
 ```
-Next, start compiling using this.
+Next, start compiling using this commands. Also it will compile RakNet library.
 ```
 cd Hydround
 make
 ```
-Also you can use install.sh script. It will be install all needed packages and libraries automatically.
+Also you can use install.sh script. It will be install all needed packages and libraries automatically. But we not recomendated use it.
 ```
 sudo ./install.sh
 ```
