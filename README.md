@@ -7,7 +7,7 @@ First of all, download sources from github.
 ```
 git clone https://github.com/undrfined/Hydround.git
 ```
-Next, start compiling using this commands. Also it will compile RakNet library.
+Next, start compiling using this commands. You need [boost](boost.org) to compile it.
 ```
 cd Hydround
 make
@@ -17,7 +17,7 @@ Also you can use install.sh script. It will be install all needed packages and l
 sudo ./install.sh
 ```
 # How to launch?
-Once you compile Hydround, you should run the binary file named 'Hydround':
+Once you compile Hydround, you should run the binary file named 'hydround':
 ```
 ./hydround
 ```
