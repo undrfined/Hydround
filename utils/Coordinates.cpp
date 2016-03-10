@@ -7,34 +7,58 @@
 //	▒▒█▒▒█▒▒██▒▒███▒▒█▒▒█▒▒██▒▒▒██▒▒█▒▒█▒███▒▒
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-#include <utils/Log.h>
+#include <utils/Coordinates.h>
 
-#include <iostream>
-
-#include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/format.hpp>
-
-using namespace boost::posix_time;
-using namespace boost;
-using namespace std;
-
-		const char* Log::getFormat(const char* mode, const int color, const void* text){
-			format fmter("\033[3%1%m[%5%] [Hydround] [%2%/%3%] -> %4%\033[0m\n");
-fmter % color % (char*) prefix % (char*)mode % (char*) text % second_clock::local_time().time_of_day();
-return fmter.str().c_str();
+int BlockCoordinates::getX() {
+return X;
 }
-		void Log::error(const void* s){
-			cout << getFormat("ERROR", 1, s);
-		}
-		void Log::fatal(const void* s){
-			cout << getFormat("FATAL", 1, s);
-		}
-		void Log::warning(const void* s){
-			cout << getFormat("WARNING", 4, s);
-	}
-		void Log::info(const void* s){
-			cout << getFormat("INFO", 7, s);
-		}
-		void Log::debug(const void* s){
-			cout << getFormat("DEBUG", 3, s);
-		}
+int BlockCoordinates::getY() {
+return Y;
+}
+int BlockCoordinates::getZ() {
+return Z;
+}
+
+void BlockCoordinates::setX(int x) {
+X = x;
+}
+void BlockCoordinates::setY(int y) {
+Y = y;
+}
+void BlockCoordinates::setZ(int z) {
+Z = z;
+}
+
+float EntityCoordinates::getX() {
+return X;
+}
+float EntityCoordinates::getY() {
+return Y;
+}
+float EntityCoordinates::getZ() {
+return Z;
+}
+
+void EntityCoordinates::setX(float x) {
+X = x;
+}
+void EntityCoordinates::setY(float y) {
+Y = y;
+}
+void EntityCoordinates::setZ(float z) {
+Z = z;
+}
+
+int ChunkCoordinates::getX() {
+return X;
+}
+int ChunkCoordinates::getZ() {
+return Z;
+}
+
+void ChunkCoordinates::setX(int x) {
+X = x;
+}
+void ChunkCoordinates::setZ(int z) {
+Z = z;
+}

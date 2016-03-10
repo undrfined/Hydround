@@ -1,4 +1,5 @@
 #include "TestPlugin.h"
+#include <utils/Log.h>
 #include <iostream>
 using namespace std;
 extern "C" TestPlugin* __createPluginObject(){
@@ -10,10 +11,12 @@ TestPlugin::TestPlugin(){
 TestPlugin::~TestPlugin(){
 
 }
+
 void TestPlugin::enable(){
-cout << "TestPlugin enabled!" << endl;
+Log log("TestPlugin");
+log.info("I'm really enabled!");
 }
 
 void TestPlugin::disable(){
-cout << "TestPlugin disabled." << endl;
+
 }

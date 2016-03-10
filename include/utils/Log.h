@@ -7,34 +7,18 @@
 //	▒▒█▒▒█▒▒██▒▒███▒▒█▒▒█▒▒██▒▒▒██▒▒█▒▒█▒███▒▒
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-#include <utils/Log.h>
-
-#include <iostream>
-
-#include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/format.hpp>
-
-using namespace boost::posix_time;
-using namespace boost;
-using namespace std;
-
-		const char* Log::getFormat(const char* mode, const int color, const void* text){
-			format fmter("\033[3%1%m[%5%] [Hydround] [%2%/%3%] -> %4%\033[0m\n");
-fmter % color % (char*) prefix % (char*)mode % (char*) text % second_clock::local_time().time_of_day();
-return fmter.str().c_str();
-}
-		void Log::error(const void* s){
-			cout << getFormat("ERROR", 1, s);
-		}
-		void Log::fatal(const void* s){
-			cout << getFormat("FATAL", 1, s);
-		}
-		void Log::warning(const void* s){
-			cout << getFormat("WARNING", 4, s);
-	}
-		void Log::info(const void* s){
-			cout << getFormat("INFO", 7, s);
-		}
-		void Log::debug(const void* s){
-			cout << getFormat("DEBUG", 3, s);
-		}
+#ifndef LOG_H_
+#define LOG_H_
+class Log{
+	private:
+		char* prefix;
+	public:
+		Log(char* p) : prefix(p){ }
+		const char* getFormat(const char* mode, const int color, const void* text);
+		void error(const void* s);
+		void fatal(const void* s);
+		void warning(const void* s);
+		void info(const void* s);
+		void debug(const void* s);
+	 };
+#endif /* LOG_H_ */
