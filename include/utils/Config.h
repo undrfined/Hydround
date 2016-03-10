@@ -7,7 +7,7 @@
 //	▒▒█▒▒█▒▒██▒▒███▒▒█▒▒█▒▒██▒▒▒██▒▒█▒▒█▒███▒▒
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-#ifndef CONFIG_H_
-#define CONFIG_H_
+#ifndef Config_H
+#define Config_H
 
-#endif
+#endif /* Config_H */

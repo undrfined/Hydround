@@ -7,8 +7,8 @@
 //	▒▒█▒▒█▒▒██▒▒███▒▒█▒▒█▒▒██▒▒▒██▒▒█▒▒█▒███▒▒
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-#ifndef LOG_H_
-#define LOG_H_
+#ifndef Log_H
+#define Log_H
 class Log{
 	private:
 		char* prefix;
@@ -21,4 +21,4 @@ class Log{
 		void info(const void* s);
 		void debug(const void* s);
 	 };
-#endif /* LOG_H_ */
+#endif /* Log_H */

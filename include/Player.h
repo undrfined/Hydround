@@ -7,13 +7,17 @@
 //	▒▒█▒▒█▒▒██▒▒███▒▒█▒▒█▒▒██▒▒▒██▒▒█▒▒█▒███▒▒
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-#ifndef PLAYER_H_
-#define PLAYER_H_
+#ifndef Player_H
+#define Player_H
 
 class Player {
-private:
-	Coordinates coords;
-public:
+	private:
+		Coordinates coords;
+		int clientId;
+	public:
+		Coordinates getCoordinates();
+		char* getName();
+		int getClientId();
 }
 
-#endif
+#endif /* Player_H */

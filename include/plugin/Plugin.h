@@ -7,14 +7,14 @@
 //	▒▒█▒▒█▒▒██▒▒███▒▒█▒▒█▒▒██▒▒▒██▒▒█▒▒█▒███▒▒
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-#ifndef PLUGIN_H_
-#define PLUGIN_H_
+#ifndef Plugin_H
+#define Plugin_H
 class Plugin {
 	public:
-	Plugin(){ };
-	virtual ~Plugin(){ };
-	virtual void enable();
-	virtual void disable();
+		Plugin(){ };
+		virtual ~Plugin(){ };
+		virtual void enable();
+		virtual void disable();
 };
 
-#endif /* PLUGIN_H_ */
+#endif /* Plugin_H */

@@ -7,13 +7,13 @@
 //	▒▒█▒▒█▒▒██▒▒███▒▒█▒▒█▒▒██▒▒▒██▒▒█▒▒█▒███▒▒
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-#ifndef HYDROUND_H_
-#define HYDROUND_H_
+#ifndef Hydround_H
+#define Hydround_H
 
 class Hydround {
-    public:
-	Hydround();
-	virtual void start();
+	public:
+		Hydround();
+		virtual void start();
 };
 
-#endif /* HYDROUND_H_ */
+#endif /* Hydround_H */

@@ -1,11 +1,11 @@
-#ifndef TEST_PLUGIN_H_
-#define TEST_PLUGIN_H_
+#ifndef TestPlugin_H
+#define TestPlugin_H
 
 class TestPlugin {
-public:
-	TestPlugin();
-	virtual ~TestPlugin();
-	virtual void enable();
-	virtual void disable();
+	public:
+		TestPlugin();
+		virtual ~TestPlugin();
+		virtual void enable();
+		virtual void disable();
 };
-#endif
+#endif /* TestPlugin_H */

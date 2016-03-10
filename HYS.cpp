@@ -9,15 +9,16 @@
 
 // HYS - Hydround Starter.
 // HYS will be start Hydround server.
+
 #include <dlfcn.h>
-#include <cstdio>
 #include <iostream>
+
 #include <Hydround.h>
 using namespace std;
 int main(){
 	void* handle = dlopen("./hydround.so", RTLD_LAZY);
 	if(!handle){
-		fprintf(stderr, "dlopen failure: %s\n", dlerror()); 
+		cout << "Cannot load hydround.so: " << dlerror():
 		return 1;
 	}
 	Hydround* (*create)();
