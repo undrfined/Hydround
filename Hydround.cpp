@@ -34,7 +34,6 @@ extern "C" void destroy_object(Hydround* object) {
 Hydround::Hydround() {	}
 
 void Hydround::start(){
-	char magic[16] = { 0x00, 0xff, 0xff, 0x00, 0xfe, 0xfe, 0xfe, 0xfe, 0xfd, 0xfd, 0xfd, 0xfd, 0x12, 0x34, 0x56, 0x78 };
 	Log log((char *) "Server");
 	log.info("Loading server...");
 	log.info("TestPlugin loading...");
@@ -56,18 +55,10 @@ void Hydround::start(){
 	while (1) {
 		ip::udp::endpoint sender;
 		int bytes = sock.receive_from(buffer(buff), sender);
-		cout << bytes << "|" << endl;
-		for(int i = 0; i < 1024; i++){
-			cout << buff[i];
-		}
-		cout << endl;
 		switch(buff[0]){
 			case (char) 0x01:
-				int pingId[8] = { (int) buff[1], (int) buff[2], (int) buff[3], (int) buff[4], (int) buff[5], (int) buff[6], (int) buff[7], (int) buff[8] };
-				stringstream send;
-				send << (char) 0x1c << pingId << 22345 << magic << "MCPE;LOL;45;0.14;0;10";
 				log.debug("MOTD");
-				sock.send_to(buffer(send.str()), sender);
+				//sock.send_to(buffer(send.str()), sender);
 			break;
 		}
 	}
