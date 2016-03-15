@@ -10,14 +10,17 @@
 #ifndef Player_H
 #define Player_H
 
-class Player {
-	private:
-		Coordinates coords;
-		int clientId;
-	public:
-		Coordinates getCoordinates();
-		char* getName();
-		int getClientId();
-}
+namespace hydround {
 
+	class Player {
+		private:
+			Coordinates coords;
+			int clientId;
+		public:
+			Coordinates getCoordinates();
+			char* getName();
+			int getClientId();
+	};
+	
+}
 #endif /* Player_H */

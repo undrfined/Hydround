@@ -10,8 +10,15 @@
 #ifndef Utils_H
 #define Utils_H
 
-class Utils {
-	public:
-		const static char MAGIC[16];
-};
+namespace hydround {
+	namespace utils {
+	
+		class Utils {
+			public:
+				char MAGIC[16] = { 0x00, 0xff, 0xff, 0x00, 0xfe, 0xfe, 0xfe, 0xfe, 0xfd, 0xfd, 0xfd, 0xfd, 0x12, 0x34, 0x56, 0x78 };
+		};
+		
+	}
+	
+}
 #endif /* Utils_H */

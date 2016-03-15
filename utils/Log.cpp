@@ -17,6 +17,7 @@
 using namespace boost::posix_time;
 using namespace boost;
 using namespace std;
+using namespace hydround::utils;
 
 const char* Log::getFormat(const char* mode, const int color, const void* text){
 	format f("\033[3%1%m[%5%] [Hydround] [%2%/%3%] -> %4%\033[0m\n");

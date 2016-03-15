@@ -10,10 +10,13 @@
 #ifndef Hydround_H
 #define Hydround_H
 
-class Hydround {
-	public:
-		Hydround();
-		virtual void start();
-};
+namespace hydround {
 
+	class Hydround {
+		public:
+			Hydround();
+			virtual void start();
+	};
+	
+}
 #endif /* Hydround_H */

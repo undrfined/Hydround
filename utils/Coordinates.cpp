@@ -9,6 +9,8 @@
 
 #include <utils/Coordinates.h>
 
+using namespace hydround::utils;
+
 int BlockCoordinates::getX() {
 	return X;
 }

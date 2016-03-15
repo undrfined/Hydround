@@ -14,11 +14,13 @@
 #include <iostream>
 
 #include <Hydround.h>
-using namespace std;
+
+using namespace hydround;
+
 int main(){
 	void* handle = dlopen("./hydround.so", RTLD_LAZY);
 	if(!handle){
-		cout << "Cannot load hydround.so: " << dlerror():
+		std::cout << "Cannot load hydround.so: " << dlerror();
 		return 1;
 	}
 	Hydround* (*create)();
@@ -27,6 +29,6 @@ int main(){
 	destroy = (void (*)(Hydround*))dlsym(handle, "destroy_object");
 	Hydround* server = (Hydround*)create();
 	server->start();
-	destroy(server);
+	//destroy(server);
 	return 0;
 }
