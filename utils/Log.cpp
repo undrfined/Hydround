@@ -8,34 +8,55 @@
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 #include <utils/Log.h>
+#include <utils/Utils.h>
 
 #include <iostream>
+#include <sstream>
 
-#include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/format.hpp>
-
-using namespace boost::posix_time;
-using namespace boost;
 using namespace std;
 using namespace hydround::utils;
 
-const char* Log::getFormat(const char* mode, const int color, const void* text){
-	format f("\033[3%1%m[%5%] [Hydround] [%2%/%3%] -> %4%\033[0m\n");
-	f % color % (char*) prefix % (char*)mode % (char*) text % second_clock::local_time().time_of_day();
-	return f.str().c_str();
+template<class T> const char* Log::getFormat(const char* mode, const char* color, T message){
+	Utils::setColor(color);
+	cout << color;
+	stringstream ss;
+	ss << "[18:00:00] [Hydround] [" << prefix << "/" << mode << "] -> " << message << endl;
+	Utils::setColor("white");
+	return ss.str().c_str();
 }
-void Log::error(const void* s){
-	cout << getFormat("ERROR", 1, s);
+template<class T> void Log::error(T message){
+	cout << getFormat("ERROR", "red", message);
 }
-void Log::fatal(const void* s){
-	cout << getFormat("FATAL", 1, s);
+template<class T> void Log::fatal(T message){
+	cout << getFormat("FATAL", "lightred", message);
 }
-void Log::warning(const void* s){
-	cout << getFormat("WARNING", 4, s);
+template<class T> void Log::warning(T message){
+	cout << getFormat("WARNING", "yellow", message);
 }
-void Log::info(const void* s){
-	cout << getFormat("INFO", 7, s);
+template<class T> void Log::info(T message){
+	cout << getFormat("INFO", "white", message);
 }
-void Log::debug(const void* s){
-	cout << getFormat("DEBUG", 3, s);
+template<class T> void Log::debug(T message){
+	cout << getFormat("DEBUG", "darkgrey", message);
 }
+template<class T> void Log::raw(T message){
+	cout << message;
+}
+
+template const char* Log::getFormat(const char*, const char*, const char*);
+template const char* Log::getFormat(const char*, const char*, const int);
+
+template void Log::info(const char*);
+template void Log::info(const int);
+
+template void Log::error(const char*);
+template void Log::error(const int);
+
+template void Log::debug(const char*);
+template void Log::debug(const int);
+
+template void Log::fatal(const char*);
+template void Log::fatal(const int);
+
+template void Log::warning(const char*);
+template void Log::warning(const int);

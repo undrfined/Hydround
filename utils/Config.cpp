@@ -11,58 +11,41 @@
 #include <utils/Log.h>
 
 #include <exception>
+#include <fstream>
+#include <iostream>
 
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/xml_parser.hpp> 
+#include <utils/RapidXML/rx.h>
+#include <utils/RapidXML/rxutils.h>
 
-using namespace boost::property_tree;
 using namespace hydround::utils;
+using namespace rapidxml;
 
-Config::Config(char *p, bool c) : path(p), createIfNotExist(c) {
-	try {
-		read_xml(path, tree);
-	} catch(const ptree_error &e) {
-		try {
-			throw FileNotExistException();
-			std::ofstream file(path);
-			file.close();
-		} catch(std::exception e) {
-			throw CreateFileException();
-		}
-	}
+Config::Config(char* p, bool c) : path(p), createIfNotExist(c), cfg(p) {
+	update();
 }
+
 Config::~Config(){ }
+
 void Config::update() {
-	try {
-		read_xml(path, tree);
-	} catch(const ptree_error &e) {
-		throw UpdateException();
-	}
-}
-void Config::save(){
-	try {
-		write_xml(path, tree);
-	} catch(const ptree_error &e) {
-		throw SaveException();
-	}
+	doc.parse<0>(cfg.data());
 }
 
-void Config::write(void* key, void* value){
-	tree.put((char*) key, (char*) value);
+void Config::save() {
+	std::ofstream stream(path);
+	//stream >> doc;
+	stream.close();
 }
 
-template<typename T> T Config::read(void* key){
-	try {
-		return tree.get<T>((char*) key);
-	} catch(const ptree_error &e) {
-		throw ReadException((char*) e.what());
-	}
+void Config::write(char* key, auto value) {
+	xml_node<>* node = doc.allocate_node(node_element, key);
+	node->append_attribute(value);
+	doc.append_node(node);
 }
-template int Config::read<int>(void*);
-template char* Config::read<char*>(void*);
-template long Config::read<long>(void*);
-template short Config::read<short>(void*);
-template float Config::read<float>(void*);
-template double Config::read<double>(void*);
-template bool Config::read<bool>(void*);
-template char Config::read<char>(void*);
+
+const char* Config::read(char* key) {
+		xml_node<>* node = doc.first_node(key);
+		if(node)
+			return node->value();
+		else
+			return 0;
+}

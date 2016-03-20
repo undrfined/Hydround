@@ -17,12 +17,13 @@ namespace hydround {
 				char* prefix;
 			public:
 				Log(char* p) : prefix(p){ }
-				const char* getFormat(const char* mode, const int color, const void* text);
-				void error(const void* s);
-				void fatal(const void* s);
-				void warning(const void* s);
-				void info(const void* s);
-				void debug(const void* s);
+				template<class T> const char* getFormat(const char* mode, const char* color, T message);
+				template<class T> void info(T message);
+				template<class T> void warning(T message);
+				template<class T> void debug(T message);
+				template<class T> void error(T message);
+				template<class T> void fatal(T message);
+				template<class T> void raw(T message);
 		};
 		
 	}

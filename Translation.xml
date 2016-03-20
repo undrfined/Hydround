@@ -1,11 +1,16 @@
 <en>
-		<server>Server</server>
-		<loadingServer>Loading server...</loadingServer>
-		<binding>Binding on port %d...</binding>
-		<bindingFail>Failed to bind!</bindingFail>
-		<error>ERROR</error>
-		<info>INFO</info>
-		<fatal>FATAL</fatal>
-		<warning>WARNING</warning>
-		<debug>DEBUG</debug>
+		<!--Hydround.cpp-->
+			<loading_server>Loading server...</loading_server>
+			<binding>Binding on port %1%...</binding>
+			<binding_fail>Failed to bind!</binding_fail>
+			<loading_plugins>Loading plugins...</loading_plugins>
+			<config_not_found>Config not found, creating new one.</config_not_found>
+			<config_not_created>Config file cannot be created!</config_not_created>
+		<!--Log.cpp-->
+			<server>Server</server>
+			<error>ERROR</error>
+			<info>INFO</info>
+			<fatal>FATAL</fatal>
+			<warning>WARNING</warning>
+			<debug>DEBUG</debug>
 </en>

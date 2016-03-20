@@ -1,7 +1,60 @@
-<ServerPort>19132</ServerPort>
-<ServerName>Hydround server</ServerName>
-<ServerMotd>Hydround server</ServerMotd>
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ -->
+<!--▒▒█▒▒█▒█▒▒█▒███▒▒███▒▒▒██▒▒█▒▒█▒█▒▒█▒███▒▒-->
+<!--▒▒█▒▒█▒█▒▒█▒█▒▒█▒█▒▒█▒█▒▒█▒█▒▒█▒██▒█▒█▒▒█▒-->
+<!--▒▒████▒▒███▒█▒▒█▒███▒▒█▒▒█▒█▒▒█▒█▒██▒█▒▒█▒-->
+<!--▒▒█▒▒█▒▒▒▒█▒█▒▒█▒█▒█▒▒█▒▒█▒█▒▒█▒█▒▒█▒█▒▒█▒-->
+<!--▒▒█▒▒█▒▒██▒▒███▒▒█▒▒█▒▒██▒▒▒██▒▒█▒▒█▒███▒▒-->
+<!-- ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ -->
+
+<!-- Hydround server configuration file. Lot's of things are not implemented right now. -->
+
+<!-- Port of the server. Used to bind server on it. -->
+<Port>19132</Port>
+<!-- Name of the server. Used for query & logging. -->
+<Name>Hydround server</Name>
+<!-- MessageOfTheDay. Used for query & client side. -->
+<MOTD>Hydround server</MOTD>
+<!-- Maximum players of the server. 0 and lower = infinity. -->
 <MaxPlayers>20</MaxPlayers>
-<ServerWhitelist>true</ServerWhitelist>
-<ServerIp>0.0.0.0</ServerIp>
+<!-- Is whitelist enabled? true - yes, false - no. Players who NOT in whitelist cannot connect to server. -->
+<Whitelist>true</Whitelist>
+<!-- Server language. -->
 <Language>en</Language>
+<!-- Enable query? true - enable, false - disable. -->
+<Query>false</Query>
+<!-- Enable RCON? true - enable, false - disable. -->
+<Rcon>false</Rcon>
+<!-- RCON password. This field will be ignored if RCON disabled. -->
+<RconPasswd>RconIsRetro123</RconPasswd>
+<!-- Enable plugins? true - enable, false - disable. -->
+<Plugins>true</Plugins>
+<!-- Path to plugins directory. If there are more then one, separate it with ; symbol. -->
+<PluginPath>plugins</PluginPath>
+<!-- Disabled plugins. If there are more then one, separate it with ; symbol. -->
+<PluginsDisabled></PluginsDisabled>
+<!-- World type. Can be standart, flat and custom. If custom world type is set, world will be empty. -->
+<WorldType>flat</WorldType>
+<!-- Enable world saving? true - enable, false - disable, ro - readonly -->
+<WorldSave>true</WorldSave>
+<!-- World directory. Will be ignored if world saving disabled. -->
+<WorldPath>world</WorldPath>
+<!-- World storing method. Can be leveldb, anvil, mcregion. Will be ignored if world saving disabled. -->
+<WorldStoringMethod>leveldb</WorldStoringMethod>
+<!-- Enable multiworld support? true - enable, false - disable. WARNING: currently this is not implemented. -->
+<MultiWorld>true</MultiWorld>
+<!-- AntiCheat system. true - enabled, false - disabled. WARNING: server can lag A LOT if this enabled. -->
+<AntiCheat>true</AntiCheat>
+<!-- If hacker detected, ... him. b - ban, k - kick, n - do nothing. Ignored if anticheat disabled. -->
+<HackerDetected>k</HackerDetected>
+<!-- Maximum players per IP address. 0 and lower = infinity. -->
+<MaxPlayersPerIP>10</MaxPlayersPerIP>
+<!-- Check for updates on enable? true - check, false - do NOT check. -->
+<Updates>true</Updates>
+<!-- Automatically install update. g - download from github, b - download from bitbucket, false - do not update. -->
+<UpdatesAuto>false</UpdatesAuto>
+<!-- Enable debug log messages? true - yes, false - no. -->
+<LogDebug>true</LogDebug>
+<!-- Write log into file? true - yes, false - no. -->
+<LogFile>true</LogFile>

@@ -10,60 +10,27 @@
 #ifndef Config_H
 #define Config_H
 
-#include <boost/property_tree/ptree.hpp>
 #include <utils/Log.h>
-#include <exception>
+
+#include <utils/RapidXML/rx.h>
+#include <utils/RapidXML/rxutils.h>
 
 namespace hydround {
 	namespace utils {
-	// TODO move exceptions implementation to .cpp file
-		class FileNotExistException : public std::exception {
-			virtual const char* what() const throw() {
-				return "File not exist.";
-			} 
-		};
-		
-		class CreateFileException : public std::exception {
-			virtual const char* what() const throw() {
-				return "Cannot create file.";
-			} 
-		};
-		
-		class ReadException : public std::exception {
-		public:
-			char* error;
-			ReadException(char* err) : error(err){
-			
-			}
-			virtual const char* what() const throw() {
-				return error;
-			} 
-		};
-		
-		class SaveException : public std::exception {
-			virtual const char* what() const throw() {
-				return "Cannot save file.";
-			} 
-		};
-		
-		class UpdateException : public std::exception {
-			virtual const char* what() const throw() {
-				return "Cannot update tree.";
-			} 
-		};
 		
 		class Config {
 			private:
 				bool createIfNotExist;
 				char *path;
-				boost::property_tree::ptree tree;
+				rapidxml::xml_document<> doc;
+				rapidxml::file<> cfg;
 			public:
 				Config(char *p, bool c = true);
 				~Config();
-				void save();
 				void update();
-				template <typename T> T read(void* key);
-				void write(void* key, void* value);
+				void save();
+				const char* read(char* key);
+				void write(char* key, auto value);
 		};
 
 	}
