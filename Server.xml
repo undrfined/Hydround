@@ -11,7 +11,7 @@
 <!-- Hydround server configuration file. Lot's of things are not implemented right now. -->
 
 <!-- Port of the server. Used to bind server on it. -->
-<Port>19132</Port>
+<Port>a19132</Port>
 <!-- Name of the server. Used for query & logging. -->
 <Name>Hydround server</Name>
 <!-- MessageOfTheDay. Used for query & client side. -->

@@ -29,7 +29,9 @@ namespace hydround {
 				~Config();
 				void update();
 				void save();
-				const char* read(char* key);
+				char* readString(char* key);
+				bool readBool(char* key);
+				int readInt(char* key);
 				void write(char* key, auto value);
 		};
 

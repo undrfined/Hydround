@@ -9,12 +9,14 @@
 
 #include <stdio.h>
 #include <dlfcn.h>
-#include <iostream>
+#include <cstring>
+#include <exception>
 
 #include <plugin/Plugin.h>
 #include <Hydround.h>
 #include <utils/Log.h>
 #include <utils/Config.h>
+#include <leveldb/db.h>
 
 using namespace hydround;
 using namespace hydround::utils;
@@ -30,15 +32,20 @@ extern "C" void destroy_object(Hydround* object) {
 Hydround::Hydround() {	}
 
 void Hydround::start(){
-	using std::cout;
 	Log log((char*) "Server");
-	log.error("Loading server...");
+	log.info("Loading server...");
 	Config cfg((char*) "Server.xml");
-	const char* port = cfg.read((char*) "Port");
-	if(port)
-		log.info(port);
-	else
-		log.warning("ERROR");
+	int port;
+	try {
+		port = cfg.readInt((char*) "Port");
+	} catch(std::exception e) {
+		port = 19132;
+	}
+	log.info(port);
+	leveldb::DB* db;
+	leveldb::Options options;
+	options.create_if_missing = true;
+	leveldb::Status status = leveldb::DB::Open(options, "db.ldb", &db);
 /*	void* handle = dlopen("plugins/TestPlugin.so", RTLD_LAZY);
 	if(!handle){
 		log.error(dlerror());

@@ -12,7 +12,7 @@
 
 #include <exception>
 #include <fstream>
-#include <iostream>
+#include <cstring>
 
 #include <utils/RapidXML/rx.h>
 #include <utils/RapidXML/rxutils.h>
@@ -42,10 +42,24 @@ void Config::write(char* key, auto value) {
 	doc.append_node(node);
 }
 
-const char* Config::read(char* key) {
+char* Config::readString(char* key) {
 		xml_node<>* node = doc.first_node(key);
 		if(node)
 			return node->value();
 		else
-			return 0;
+			throw std::exception();
+}
+
+bool Config::readBool(char* key) {
+		if(strcmp(readString(key), "true") == 0)
+			return true;
+		else
+			return false;
+}
+int Config::readInt(char* key) {
+	try {
+	return atoi(readString(key));
+	} catch(std::exception e) {
+		return 228;
+	}
 }

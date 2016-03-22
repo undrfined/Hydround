@@ -18,7 +18,7 @@
 using namespace hydround;
 
 int main(){
-	void* handle = dlopen("./hydround.so", RTLD_LAZY);
+	void* handle = dlopen("lib/hydround.so", RTLD_LAZY);
 	if(!handle){
 		std::cout << "Cannot load hydround.so: " << dlerror();
 		return 1;

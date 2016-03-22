@@ -18,26 +18,29 @@ using namespace hydround::utils;
 
 template<class T> const char* Log::getFormat(const char* mode, const char* color, T message){
 	Utils::setColor(color);
-	cout << color;
 	stringstream ss;
 	ss << "[18:00:00] [Hydround] [" << prefix << "/" << mode << "] -> " << message << endl;
-	Utils::setColor("white");
 	return ss.str().c_str();
 }
 template<class T> void Log::error(T message){
 	cout << getFormat("ERROR", "red", message);
+	Utils::resetColor();
 }
 template<class T> void Log::fatal(T message){
 	cout << getFormat("FATAL", "lightred", message);
+	Utils::resetColor();
 }
 template<class T> void Log::warning(T message){
 	cout << getFormat("WARNING", "yellow", message);
+	Utils::resetColor();
 }
 template<class T> void Log::info(T message){
 	cout << getFormat("INFO", "white", message);
+	Utils::resetColor();
 }
 template<class T> void Log::debug(T message){
 	cout << getFormat("DEBUG", "darkgrey", message);
+	Utils::resetColor();
 }
 template<class T> void Log::raw(T message){
 	cout << message;
