@@ -9,21 +9,26 @@
 
 #ifndef Log_H
 #define Log_H
+
+#include <string>
+
+using std::string;
+
 namespace hydround {
 	namespace utils {
 	
 		class Log{
 			private:
-				char* prefix;
+				string prefix;
 			public:
-				Log(char* p) : prefix(p){ }
-				template<class T> const char* getFormat(const char* mode, const char* color, T message);
-				template<class T> void info(T message);
-				template<class T> void warning(T message);
-				template<class T> void debug(T message);
-				template<class T> void error(T message);
-				template<class T> void fatal(T message);
-				template<class T> void raw(T message);
+				Log(string p) : prefix(p){ }
+				string getFormat(string mode, string color, string message);
+				void info(string message);
+				void warning(string message);
+				void debug(string message);
+				void error(string message);
+				void fatal(string message);
+				void raw(string message);
 		};
 		
 	}

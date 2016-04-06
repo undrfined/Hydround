@@ -7,9 +7,6 @@
 //	▒▒█▒▒█▒▒██▒▒███▒▒█▒▒█▒▒██▒▒▒██▒▒█▒▒█▒███▒▒
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-// HYS - Hydround Starter.
-// HYS will be start Hydround server.
-
 #include <dlfcn.h>
 #include <iostream>
 
@@ -18,17 +15,14 @@
 using namespace hydround;
 
 int main(){
-	void* handle = dlopen("lib/hydround.so", RTLD_LAZY);
+	void* handle = dlopen("/data/data//com.n0n3m4.droidc/files/server/hydround.so", RTLD_LAZY);
 	if(!handle){
 		std::cout << "Cannot load hydround.so: " << dlerror();
 		return 1;
 	}
 	Hydround* (*create)();
-	void (*destroy)(Hydround*);
-	create = (Hydround* (*)())dlsym(handle, "create_object");
-	destroy = (void (*)(Hydround*))dlsym(handle, "destroy_object");
+	create = (Hydround* (*)())dlsym(handle, "__createHydroundObject");
 	Hydround* server = (Hydround*)create();
 	server->start();
-	//destroy(server);
 	return 0;
 }

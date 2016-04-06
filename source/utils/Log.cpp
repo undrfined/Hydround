@@ -11,55 +11,40 @@
 #include <utils/Utils.h>
 
 #include <iostream>
-#include <sstream>
+#include <string>
 
-using namespace std;
 using namespace hydround::utils;
+using hydround::utils::Log;
+using std::cout;
+using std::string;
+using std::endl;
 
-template<class T> const char* Log::getFormat(const char* mode, const char* color, T message){
-	Utils::setColor(color);
-	stringstream ss;
-	ss << "[18:00:00] [Hydround] [" << prefix << "/" << mode << "] -> " << message << endl;
-	return ss.str().c_str();
+string Log::getFormat(string mode, string color, string message){
+	setColor(color);
+	string format;
+	format.reserve(string("[18:00:00] [Hydround] [").size() + prefix.size() + string("/").size() + mode.size() + string("] -> ").size() + message.size());
+	return format;
 }
-template<class T> void Log::error(T message){
+void Log::error(string message){
 	cout << getFormat("ERROR", "red", message);
-	Utils::resetColor();
+	resetColor();
 }
-template<class T> void Log::fatal(T message){
+void Log::fatal(string message){
 	cout << getFormat("FATAL", "lightred", message);
-	Utils::resetColor();
+	resetColor();
 }
-template<class T> void Log::warning(T message){
+void Log::warning(string message){
 	cout << getFormat("WARNING", "yellow", message);
-	Utils::resetColor();
+	resetColor();
 }
-template<class T> void Log::info(T message){
+void Log::info(string message){
 	cout << getFormat("INFO", "white", message);
-	Utils::resetColor();
+	resetColor();
 }
-template<class T> void Log::debug(T message){
+void Log::debug(string message){
 	cout << getFormat("DEBUG", "darkgrey", message);
-	Utils::resetColor();
+	resetColor();
 }
-template<class T> void Log::raw(T message){
+void Log::raw(string message){
 	cout << message;
 }
-
-template const char* Log::getFormat(const char*, const char*, const char*);
-template const char* Log::getFormat(const char*, const char*, const int);
-
-template void Log::info(const char*);
-template void Log::info(const int);
-
-template void Log::error(const char*);
-template void Log::error(const int);
-
-template void Log::debug(const char*);
-template void Log::debug(const int);
-
-template void Log::fatal(const char*);
-template void Log::fatal(const int);
-
-template void Log::warning(const char*);
-template void Log::warning(const int);

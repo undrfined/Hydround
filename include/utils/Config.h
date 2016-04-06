@@ -15,24 +15,28 @@
 #include <utils/RapidXML/rx.h>
 #include <utils/RapidXML/rxutils.h>
 
+#include <string>
+
+using std::string;
+
 namespace hydround {
 	namespace utils {
 		
 		class Config {
 			private:
 				bool createIfNotExist;
-				char *path;
+				string path;
 				rapidxml::xml_document<> doc;
 				rapidxml::file<> cfg;
 			public:
-				Config(char *p, bool c = true);
+				Config(string p, bool c = true);
 				~Config();
 				void update();
 				void save();
-				char* readString(char* key);
-				bool readBool(char* key);
-				int readInt(char* key);
-				void write(char* key, auto value);
+				string readString(string key);
+				bool readBool(string key);
+				int readInt(string key);
+				void write(string key, auto value);
 		};
 
 	}

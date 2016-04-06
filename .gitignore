@@ -1,3 +1,3 @@
-hydround
-hydround.so
-plugins/TestPlugin.so
+server/hydround
+server/hydround.so
+server/plugins/TestPlugin.so

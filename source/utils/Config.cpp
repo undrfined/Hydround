@@ -8,19 +8,22 @@
 //	 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 #include <utils/Config.h>
+#include <utils/Utils.h>
 #include <utils/Log.h>
 
 #include <exception>
 #include <fstream>
 #include <cstring>
+#include <string>
 
 #include <utils/RapidXML/rx.h>
 #include <utils/RapidXML/rxutils.h>
 
 using namespace hydround::utils;
 using namespace rapidxml;
+using std::string;
 
-Config::Config(char* p, bool c) : path(p), createIfNotExist(c), cfg(p) {
+Config::Config(string p, bool c) : path(p), createIfNotExist(c), cfg(p.c_str()) {
 	update();
 }
 
@@ -36,30 +39,31 @@ void Config::save() {
 	stream.close();
 }
 
-void Config::write(char* key, auto value) {
-	xml_node<>* node = doc.allocate_node(node_element, key);
+void Config::write(string key, auto value) {
+	xml_node<>* node = doc.allocate_node(node_element, key.c_str());
 	node->append_attribute(value);
 	doc.append_node(node);
 }
 
-char* Config::readString(char* key) {
-		xml_node<>* node = doc.first_node(key);
+string Config::readString(string key) {
+		xml_node<>* node = doc.first_node(key.c_str());
 		if(node)
 			return node->value();
 		else
 			throw std::exception();
 }
 
-bool Config::readBool(char* key) {
-		if(strcmp(readString(key), "true") == 0)
+bool Config::readBool(string key) {
+		if(readString(key.c_str()) == "true")
 			return true;
 		else
 			return false;
 }
-int Config::readInt(char* key) {
+
+int Config::readInt(string key) {
 	try {
-	return atoi(readString(key));
+		return stoi(readString(key.c_str()));
 	} catch(std::exception e) {
-		return 228;
+		throw std::exception();
 	}
 }
